@@ -25,7 +25,7 @@ class _editscreenState extends State<editscreen> {
       _edit.text = Get.arguments['note'].toString();
     }
   }
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -33,9 +33,9 @@ class _editscreenState extends State<editscreen> {
         title: Text('edit'),
         centerTitle: true,
       ),
-      
-    //   ===========body======
-      
+
+      //   ===========body======
+
       body: Column(
         children: [
           Container(
@@ -48,16 +48,16 @@ class _editscreenState extends State<editscreen> {
           SizedBox(height: 20),
           ElevatedButton(
               onPressed: (){
-              FirebaseFirestore.instance
-                  .collection('notes')
-                  .doc(Get.arguments['docId'].toString())
-                  .update({
-                'note':_edit.text.trim()
-              })
-                  .then((value){
-                    Get.offAll(()=> homePage());
-                    print('note updated succesfully');
-              });
+                FirebaseFirestore.instance
+                    .collection('notes')
+                    .doc(Get.arguments['docId'].toString())
+                    .update({
+                  'note':_edit.text.trim()
+                })
+                    .then((value){
+                  Get.offAll(()=> homePage());
+                  print('note updated succesfully');
+                });
               },
               child:Text('update')
           )
